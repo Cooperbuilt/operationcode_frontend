@@ -3,7 +3,11 @@
   align-items: center;
   margin: 20px 10px;
   padding: 10px;
+<<<<<<< HEAD
   width: 100px;
+=======
+  width: auto;
+>>>>>>> dc727a56dff9d9e8a7a17e1d434af22015255057
   height: auto;
   background: #fff;
   box-shadow: 0 3px 6px 1px rgba(0, 0, 0, 0.1);

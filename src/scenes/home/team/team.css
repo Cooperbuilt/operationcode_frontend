@@ -6,7 +6,11 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+<<<<<<< HEAD
 	height: 40%;
+=======
+	height: 15%;
+>>>>>>> dc727a56dff9d9e8a7a17e1d434af22015255057
 	padding-bottom: 5rem;
 }
 
@@ -18,6 +22,7 @@
 .quote {
 	font-size: 3.4rem;
 	color: white;
+<<<<<<< HEAD
 	padding: 10rem 2rem;
 }
 
@@ -25,6 +30,9 @@
 	.quote {
 		font-size: 2rem;
 	}
+=======
+	padding: 6rem 2rem;
+>>>>>>> dc727a56dff9d9e8a7a17e1d434af22015255057
 }
 
 .serviceSealWrapper {
@@ -48,6 +56,7 @@
 
 .team {
   display: flex;
+<<<<<<< HEAD
   flex-flow: row wrap;
   align-items: center;
   justify-content: space-around;
@@ -55,4 +64,31 @@
   padding-right: 5rem;
 }
 
+=======
+  flex-wrap: wrap;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 850px) {
+	.titleQuote {
+		height: 10%;
+	}
+}
+
+@media screen and (max-width: 650px) {
+	.quote {
+		font-size: 2rem;
+	}
+
+	.serviceSealWrapper {
+		flex-wrap: wrap;
+	}
+	.titleQuote {
+		height: 5%;
+	}
+}
+>>>>>>> dc727a56dff9d9e8a7a17e1d434af22015255057
 
