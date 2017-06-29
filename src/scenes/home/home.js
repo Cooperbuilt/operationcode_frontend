@@ -5,7 +5,10 @@ import { Route, withRouter, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import * as CookieHelpers from 'shared/utils/cookieHelper';
+import Login from 'shared/components/login/login';
+import IdmeVerify from 'shared/components/idme/idmeverify/idmeverify';
 import familyImage from 'images/Family-2.jpg';
+import Profile from './profile/profile';
 import SignUp from './signup/signup';
 import MentorRequestsTable from './mentor/mentorRequestsTable/mentorRequestsTable';
 import SquadsTable from './squads/squadsTable/squadsTable';
@@ -42,11 +45,7 @@ class Home extends Component {
 
   componentWillMount() {
     this.setBgImage(this.props.location);
-    const cookies = CookieHelpers.getUserStatus();
-    this.setState({
-      signedIn: cookies.signedIn,
-      mentor: cookies.mentor
-    });
+    this.updateRootAuthState();
   }
 
   setBgImage(location) {
@@ -57,24 +56,36 @@ class Home extends Component {
     }
   }
 
-  updateRootAuthState = () => {
+  updateRootAuthState = (cb) => {
+    const cookies = CookieHelpers.getUserStatus();
     this.setState({
-      mentor: true,
-      signedIn: true
+      signedIn: cookies.signedIn,
+      mentor: cookies.mentor,
+      verified: cookies.verified
+    }, () => {
+      if (cb) {
+        cb(this.props.history);
+      }
     });
   }
 
   logOut = () => {
     CookieHelpers.clearAuthCookies();
-    window.location = '/';
+    this.setState({
+      signedIn: false,
+      mentor: false,
+      verified: false
+    }, () => this.props.history.push('/'));
   }
 
   render() {
-    const { mentor, signedIn } = this.state;
+    const { mentor, signedIn, verified } = this.state;
     const authProps = {
       signedIn,
-      mentor
+      mentor,
+      verified
     };
+
     const classes = classNames({
       [`${styles.home}`]: true,
       [`${styles.backgroundImage}`]: this.state.bgImage
@@ -167,6 +178,24 @@ class Home extends Component {
               path="/gala"
               render={() => (
                 <Gala {...authProps} />
+              )}
+            />
+            <Route
+              path="/login"
+              render={() => (
+                <Login updateRootAuthState={this.updateRootAuthState} {...authProps} />
+              )}
+            />
+            <Route
+              exact path="/profile"
+              render={() => (
+                <Profile {...authProps} />
+              )}
+            />
+            <Route
+              exact path="/profile/verify"
+              render={() => (
+                <IdmeVerify updateRootAuthState={this.updateRootAuthState} {...authProps} />
               )}
             />
             <Route exact path="/about/financial-statements" component={FinancialStatements} />

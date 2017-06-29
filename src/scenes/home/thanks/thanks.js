@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Section from 'shared/components/section/section';
+<<<<<<< HEAD
 import Button from 'shared/components/button/button';
+=======
+import LinkButton from 'shared/components/linkButton/linkButton';
+>>>>>>> 953d37dad8aef320d72ab887cc971a42ed4954e5
 import styles from './thanks.css';
 
 class Thanks extends Component {
@@ -23,6 +27,7 @@ class Thanks extends Component {
   render() {
     return (
       <Section title="Thanks for joining">
+<<<<<<< HEAD
         <span>Thanks for joining operation code. Please check your email for orders.</span>
 <<<<<<< HEAD
         <span className={styles.auth}>If you are interested in scholarships and / or hardware loans, please authenticate yourself using the button below.</span>
@@ -31,6 +36,13 @@ class Thanks extends Component {
         </Button>
 =======
 >>>>>>> dc727a56dff9d9e8a7a17e1d434af22015255057
+=======
+        <h2>Thanks for joining operation code. Please check your email for orders.
+        Set up your user profile and verify your military affiliation!</h2>
+        <div className={styles.profileButton}>
+          <LinkButton link="/profile" text="Click to set up your user profile!" />
+        </div>
+>>>>>>> 953d37dad8aef320d72ab887cc971a42ed4954e5
       </Section>
 
     );
